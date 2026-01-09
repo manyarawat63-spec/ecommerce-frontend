@@ -19,13 +19,13 @@ export default function ProductList() {
   const navigate = useNavigate();
 
   const [sortBy, setSortBy] = useState("none");
+const API = import.meta.env.VITE_API_URL;
 
   // 🔹 FETCH PRODUCTS
   const fetchProducts = async () => {
     try {
-      const res = await fetch(
-  "https://ecommerce-backend-45a5.onrender.com/api/products"
-);
+      const res = await fetch(`${API}/api/products`);
+
 
       const data = await res.json();
 
@@ -75,7 +75,7 @@ export default function ProductList() {
     const token = localStorage.getItem("token");
 
     try {
-      await fetch(`http://ecommerce-backend-45a5.onrender.com/api/products/${id}`, {
+      await fetch(`${API}/api/products/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
