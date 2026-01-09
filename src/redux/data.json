@@ -1,0 +1,243 @@
+[
+  {
+    "id": 1,
+    "product_name": "Ice Cream",
+    "product_price": 5.99,
+    "product_catog": "Food - Frozen Foods",
+    "product_desc": "Rich and creamy ice cream, available in various flavors.",
+    "product_image": "https://images.pexels.com/photos/1352278/pexels-photo-1352278.jpeg"
+  },
+  {
+    "id": 2,
+    "product_name": "Rice Pilaf Mix",
+    "product_price": 2.59,
+    "product_catog": "Food - Grains",
+    "product_desc": "Quick and easy rice pilaf mix for side dishes.",
+    "product_image": "https://images.pexels.com/photos/128431/pexels-photo-128431.jpeg"
+  },
+  {
+    "id": 3,
+    "product_name": "Frozen Pizza",
+    "product_price": 7.99,
+    "product_catog": "Food - Frozen Foods",
+    "product_desc": "Delicious frozen pizza with a variety of toppings.",
+    "product_image": "https://images.pexels.com/photos/4109084/pexels-photo-4109084.jpeg"
+  },
+  {
+    "id": 4,
+    "product_name": "Slim Fit Chinos",
+    "product_price": 54.99,
+    "product_catog": "Clothing - Pants",
+    "product_desc": "Comfortable slim fit chinos for a polished look.",
+    "product_image": "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg"
+  },
+  {
+    "id": 5,
+    "product_name": "Adjustable Resistance Bands",
+    "product_price": 39.99,
+    "product_catog": "Fitness",
+    "product_desc": "Set of resistance bands for versatile strength training workouts.",
+    "product_image": "https://images.pexels.com/photos/6453392/pexels-photo-6453392.jpeg"
+  },
+  {
+    "id": 6,
+    "product_name": "Vegetarian Stir Fry Sauce",
+    "product_price": 2.49,
+    "product_catog": "Food - Condiments",
+    "product_desc": "Flavorful sauce perfect for stir-frying vegetables and tofu.",
+    "product_image": "https://images.pexels.com/photos/1435895/pexels-photo-1435895.jpeg"
+  },
+  {
+    "id": 7,
+    "product_name": "Organic Granola",
+    "product_price": 5.49,
+    "product_catog": "Food - Breakfast",
+    "product_desc": "Healthy granola made with oats and honey.",
+    "product_image": "https://images.pexels.com/photos/1435898/pexels-photo-1435898.jpeg"
+  },
+  {
+    "id": 8,
+    "product_name": "Bluetooth Shower Speaker",
+    "product_price": 24.99,
+    "product_catog": "Audio",
+    "product_desc": "Water-resistant Bluetooth speaker for showers.",
+    "product_image": "https://images.pexels.com/photos/3394667/pexels-photo-3394667.jpeg"
+  },
+  {
+    "id": 9,
+    "product_name": "Frozen Mixed Berries",
+    "product_price": 5.99,
+    "product_catog": "Food - Frozen Foods",
+    "product_desc": "A mix of strawberries, blueberries, and raspberries.",
+    "product_image": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg"
+  },
+  {
+    "id": 10,
+    "product_name": "Rechargeable Laptop Battery Pack",
+    "product_price": 49.99,
+    "product_catog": "Electronics",
+    "product_desc": "Portable battery pack to charge laptops while on the move.",
+    "product_image": "https://images.pexels.com/photos/374707/pexels-photo-374707.jpeg"
+  },
+  {
+    "id": 11,
+    "product_name": "Infrared Thermometer Gun",
+    "product_price": 29.99,
+    "product_catog": "Health",
+    "product_desc": "Non-contact thermometer for quick and easy temperature readings.",
+    "product_image": "https://images.pexels.com/photos/3952224/pexels-photo-3952224.jpeg"
+  },
+  {
+    "id": 12,
+    "product_name": "Apple Cinnamon Oatmeal",
+    "product_price": 2.89,
+    "product_catog": "Food - Breakfast",
+    "product_desc": "Warm oatmeal flavored with apple and cinnamon.",
+    "product_image": "https://images.pexels.com/photos/4110254/pexels-photo-4110254.jpeg"
+  },
+  {
+    "id": 13,
+    "product_name": "Quinoa",
+    "product_price": 4.49,
+    "product_catog": "Food - Grains",
+    "product_desc": "Protein-rich quinoa, a great alternative to rice.",
+    "product_image": "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg"
+  },
+  {
+    "id": 14,
+    "product_name": "Vegetable Lasagna",
+    "product_price": 6.99,
+    "product_catog": "Food - Frozen Foods",
+    "product_desc": "Layers of pasta, veggies, and cheese baked to perfection.",
+    "product_image": "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"
+  },
+  {
+    "id": 15,
+    "product_name": "Electronic Drum Kit",
+    "product_price": 359.99,
+    "product_catog": "Music",
+    "product_desc": "Compact electronic drum kit for musicians of all levels.",
+    "product_image": "https://images.pexels.com/photos/164745/pexels-photo-164745.jpeg"
+  },
+  {
+    "id": 16,
+    "product_name": "Bicycle Lock",
+    "product_price": 29.99,
+    "product_catog": "Bicycles",
+    "product_desc": "Heavy-duty bicycle lock for security.",
+    "product_image": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg"
+  },
+  {
+    "id": 17,
+    "product_name": "Vegan Alfredo Sauce",
+    "product_price": 4.99,
+    "product_catog": "Food - Sauces",
+    "product_desc": "Creamy, dairy-free Alfredo sauce.",
+    "product_image": "https://images.pexels.com/photos/103124/pexels-photo-103124.jpeg"
+  },
+  {
+    "id": 18,
+    "product_name": "Luxe Velvet Blazer",
+    "product_price": 89.99,
+    "product_catog": "Clothing - Outerwear",
+    "product_desc": "Elevate your outfit with this sophisticated velvet blazer.",
+    "product_image": "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg"
+  },
+  {
+    "id": 19,
+    "product_name": "Basketball",
+    "product_price": 29.99,
+    "product_catog": "Sports",
+    "product_desc": "Official size basketball for indoor and outdoor play.",
+    "product_image": "https://images.pexels.com/photos/3783741/pexels-photo-3783741.jpeg"
+  },
+  {
+    "id": 20,
+    "product_name": "Outdoor Folding Table",
+    "product_price": 39.99,
+    "product_catog": "Outdoor",
+    "product_desc": "Lightweight and portable folding table for camping or picnics.",
+    "product_image": "https://images.pexels.com/photos/160420/pexels-photo-160420.jpeg"
+  },
+  {
+    "id": 21,
+    "product_name": "Pistachio Ice Cream",
+    "product_price": 4.99,
+    "product_catog": "Food - Frozen Desserts",
+    "product_desc": "Creamy pistachio-flavored ice cream with real nuts.",
+    "product_image": "https://images.pexels.com/photos/1352291/pexels-photo-1352291.jpeg"
+  },
+  {
+    "id": 22,
+    "product_name": "Balsamic Glazed Brussels Sprouts",
+    "product_price": 4.99,
+    "product_catog": "Food - Vegetables",
+    "product_desc": "Roasted Brussels sprouts drizzled with balsamic glaze.",
+    "product_image": "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg"
+  },
+  {
+    "id": 23,
+    "product_name": "Smart Light Switch",
+    "product_price": 29.99,
+    "product_catog": "Smart Home",
+    "product_desc": "Control lights remotely with this smart switch.",
+    "product_image": "https://images.pexels.com/photos/3965563/pexels-photo-3965563.jpeg"
+  },
+  {
+    "id": 24,
+    "product_name": "Quinoa",
+    "product_price": 4.49,
+    "product_catog": "Food - Grains",
+    "product_desc": "Protein-rich quinoa, a great alternative to rice.",
+    "product_image": "https://images.pexels.com/photos/5739/food-salad-healthy-lunch.jpg"
+  },
+  {
+    "id": 25,
+    "product_name": "Under Desk Footrest",
+    "product_price": 29.99,
+    "product_catog": "Office",
+    "product_desc": "Adjustable footrest for improved comfort while sitting.",
+    "product_image": "https://images.pexels.com/photos/813269/pexels-photo-813269.jpeg"
+  },
+  {
+    "id": 26,
+    "product_name": "Cacao Nibs",
+    "product_price": 6.49,
+    "product_catog": "Food - Baking",
+    "product_desc": "Crunchy cacao nibs, great for adding to smoothies or baking.",
+    "product_image": "https://images.pexels.com/photos/4110255/pexels-photo-4110255.jpeg"
+  },
+  {
+    "id": 27,
+    "product_name": "Gardening Gloves",
+    "product_price": 15.99,
+    "product_catog": "Garden",
+    "product_desc": "Durable gardening gloves with reinforced fingertips.",
+    "product_image": "https://images.pexels.com/photos/765154/pexels-photo-765154.jpeg"
+  },
+  {
+    "id": 28,
+    
+    "product_name": "Portable Solar Generator",
+    "product_price": 399.99,
+    "product_catog": "Outdoor",
+    "product_desc": "Eco-friendly generator for outdoor adventures.",
+    "product_image": "https://images.pexels.com/photos/3719008/pexels-photo-3719008.jpeg"
+  },
+  {
+    "id": 29,
+    "product_name": "Chia Seed Pudding Mix",
+    "product_price": 4.19,
+    "product_catog": "Food - Breakfast",
+    "product_desc": "Mix to create a delicious chia seed pudding in just a few minutes.",
+    "product_image": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+  },
+  {
+    "id": 30,
+    "product_name": "Screen Cleaning Kit",
+    "product_price": 15.99,
+    "product_catog": "Electronics",
+    "product_desc": "Safe cleaning solution and tools for electronics screens.",
+    "product_image": "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg"
+  }
+]
