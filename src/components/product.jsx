@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useReducer, useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataReducer, initialState } from "../redux/dataReducer";
 import {
@@ -15,18 +15,18 @@ export default function ProductList() {
   const reduxDispatch = useDispatch();
   const cart = useSelector((state) => state.cart || []);
   const { search = "" } = useSearch();
-  const { isLoggedIn, user } = useAuth(); // 👈 user bhi liya
+  const { isLoggedIn, user } = useAuth();
   const navigate = useNavigate();
 
   const [sortBy, setSortBy] = useState("none");
-const API = import.meta.env.VITE_API_URL;
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 FETCH PRODUCTS
-  const fetchProducts = async () => {
+  const API = import.meta.env.VITE_API_URL;
+
+  // 🔹 FETCH PRODUCTS (stable + reusable)
+  const fetchProducts = useCallback(async () => {
     try {
       const res = await fetch(`${API}/api/products`);
-
-
       const data = await res.json();
 
       localDispatch({
@@ -36,12 +36,15 @@ const API = import.meta.env.VITE_API_URL;
     } catch (error) {
       console.error("Error fetching products:", error);
       localDispatch({ type: "LOAD_DATA", payload: [] });
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [API]);
 
+  // 🔹 INITIAL LOAD
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   // 🔹 FILTER + SORT + SEARCH
   const filteredProducts = (state.items || [])
@@ -75,17 +78,18 @@ const API = import.meta.env.VITE_API_URL;
     const token = localStorage.getItem("token");
 
     try {
+      setLoading(true);
       await fetch(`${API}/api/products/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      fetchProducts(); // refresh list
+      fetchProducts();
     } catch (err) {
       console.error("Delete failed", err);
       alert("Failed to delete product");
+      setLoading(false);
     }
   };
 
@@ -109,102 +113,110 @@ const API = import.meta.env.VITE_API_URL;
         </select>
       </div>
 
-      {/* PRODUCTS GRID */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {filteredProducts.map((product) => {
-          const inCart = cart.find((i) => i._id === product._id);
-          const rating = Math.floor(Math.random() * 3) + 3;
+      {/* 🔄 LOADING SPINNER */}
+      {loading ? (
+        <div className="flex flex-col items-center justify-center min-h-[60vh]">
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+          <p className="mt-3 text-gray-600">Loading products...</p>
+        </div>
+      ) : (
+        /* PRODUCTS GRID */
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {filteredProducts.map((product) => {
+            const inCart = cart.find((i) => i._id === product._id);
+            const rating = Math.floor(Math.random() * 3) + 3;
 
-          return (
-            <div
-              key={product._id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden"
-            >
-              <img
-                src={product.product_image || "/no-image.png"}
-                alt={product.product_name}
-                className="h-56 w-full object-cover"
-              />
+            return (
+              <div
+                key={product._id}
+                className="bg-white shadow-lg rounded-xl overflow-hidden"
+              >
+                <img
+                  src={product.product_image || "/no-image.png"}
+                  alt={product.product_name}
+                  className="h-56 w-full object-cover"
+                />
 
-              <div className="p-4">
-                <h3 className="font-semibold text-lg truncate">
-                  {product.product_name}
-                </h3>
+                <div className="p-4">
+                  <h3 className="font-semibold text-lg truncate">
+                    {product.product_name}
+                  </h3>
 
-                <p className="text-sm text-gray-600 line-clamp-2">
-                  {product.product_desc}
-                </p>
+                  <p className="text-sm text-gray-600 line-clamp-2">
+                    {product.product_desc}
+                  </p>
 
-                <div className="text-yellow-500 mt-2">
-                  {"⭐".repeat(rating)} ({rating}.0)
-                </div>
+                  <div className="text-yellow-500 mt-2">
+                    {"⭐".repeat(rating)} ({rating}.0)
+                  </div>
 
-                <div className="mt-2">
-                  <span className="font-bold text-indigo-600 text-lg">
-                    ₹{product.product_price}
-                  </span>
-                </div>
+                  <div className="mt-2">
+                    <span className="font-bold text-indigo-600 text-lg">
+                      ₹{product.product_price}
+                    </span>
+                  </div>
 
-                {/* CART SECTION */}
-                <div className="mt-4">
-                  {!isLoggedIn ? (
-                    <button
-                      onClick={() => navigate("/login")}
-                      className="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed"
-                    >
-                      Login to Add
-                    </button>
-                  ) : !inCart ? (
-                    <button
-                      onClick={() => handleAdd(product)}
-                      className="w-full bg-blue-600 text-white py-2 rounded-lg"
-                    >
-                      Add to Cart
-                    </button>
-                  ) : (
-                    <div className="flex justify-between items-center">
+                  {/* CART */}
+                  <div className="mt-4">
+                    {!isLoggedIn ? (
                       <button
-                        onClick={() => handleDec(product)}
-                        className="px-3 py-1 bg-gray-300 rounded"
+                        onClick={() => navigate("/login")}
+                        className="w-full bg-gray-400 text-white py-2 rounded-lg"
                       >
-                        –
+                        Login to Add
                       </button>
-                      <span>{inCart.quantity}</span>
+                    ) : !inCart ? (
                       <button
-                        onClick={() => handleInc(product)}
-                        className="px-3 py-1 bg-blue-600 text-white rounded"
+                        onClick={() => handleAdd(product)}
+                        className="w-full bg-blue-600 text-white py-2 rounded-lg"
                       >
-                        +
+                        Add to Cart
+                      </button>
+                    ) : (
+                      <div className="flex justify-between items-center">
+                        <button
+                          onClick={() => handleDec(product)}
+                          className="px-3 py-1 bg-gray-300 rounded"
+                        >
+                          –
+                        </button>
+                        <span>{inCart.quantity}</span>
+                        <button
+                          onClick={() => handleInc(product)}
+                          className="px-3 py-1 bg-blue-600 text-white rounded"
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ADMIN */}
+                  {user?.role === "admin" && (
+                    <div className="flex gap-2 mt-4">
+                      <button
+                        onClick={() =>
+                          navigate(`/admin/edit/${product._id}`)
+                        }
+                        className="flex-1 bg-yellow-500 text-white py-1 rounded"
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        onClick={() => handleDelete(product._id)}
+                        className="flex-1 bg-red-600 text-white py-1 rounded"
+                      >
+                        Delete
                       </button>
                     </div>
                   )}
                 </div>
-
-                {/* 🔥 ADMIN ACTIONS */}
-                {user?.role === "admin" && (
-                  <div className="flex gap-2 mt-4">
-                    <button
-                      onClick={() =>
-                        navigate(`/admin/edit/${product._id}`)
-                      }
-                      className="flex-1 bg-yellow-500 text-white py-1 rounded"
-                    >
-                      Edit
-                    </button>
-
-                    <button
-                      onClick={() => handleDelete(product._id)}
-                      className="flex-1 bg-red-600 text-white py-1 rounded"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                )}
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

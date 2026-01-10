@@ -15,7 +15,7 @@ export default function EditProduct() {
 
   // 🔹 Load product data
   useEffect(() => {
-    fetch("http://ecommerce-backend-45a5.onrender.com/api/products")
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         const product = data.find((p) => p._id === id);
@@ -39,7 +39,7 @@ export default function EditProduct() {
     formData.append("product_desc", form.product_desc);
     if (image) formData.append("product_image", image);
 
-    await fetch(`http://ecommerce-backend-45a5.onrender.com/api/products/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

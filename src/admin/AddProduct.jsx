@@ -42,7 +42,7 @@ export default function AddProduct() {
     try {
       setLoading(true);
 
-      const res = await fetch("http://ecommerce-backend-45a5.onrender.com/api/products", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

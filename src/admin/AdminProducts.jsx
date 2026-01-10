@@ -7,7 +7,7 @@ export default function AdminProducts() {
 
   // 🔹 GET ALL PRODUCTS
   useEffect(() => {
-    fetch("http://ecommerce-backend-45a5.onrender.com/api/products")
+    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
@@ -16,7 +16,7 @@ export default function AdminProducts() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;
 
-    await fetch(`http://ecommerce-backend-45a5.onrender.com/api/products/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
