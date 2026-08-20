@@ -21,12 +21,13 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+const API = import.meta.env.VITE_API_URL;
     try {
-      const res = await axios.post(
-  "https://ecommerce-backend-45a5.onrender.com/api/auth/login",
+     const res = await axios.post(
+  `${API}/api/auth/login`,
   form
 );
+
 
 
       alert("Login Successful!");
